@@ -1,0 +1,45 @@
+.right{
+    position: absolute;
+    top:0;
+    width: 950px;
+    right:35px;
+}
+.item{
+    height:150px;
+    width:100%;
+    background-color: white;
+    margin:30px;
+    margin-left:0;
+    position: relative;
+}
+.content{
+    margin-left:20px;
+    margin-right:20px;
+    padding-bottom: 20px;
+    border-bottom: 2px dotted #aaa;
+}
+.time{
+    position: absolute;
+    top:15px;
+    right:20px;
+
+}
+.detail{
+    background-color: white;
+    margin-top:20px;
+    padding: 5px 10px;
+    height: 100%;
+}
+.title{
+    margin-left: -10px;
+    border-left: 5px solid #999;
+    color:#aaa;
+    margin-bottom: 10px;
+}
+.createtime{
+    color: #ccc;
+}
+.blog{
+    margin-top: 50px;
+
+}

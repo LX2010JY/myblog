@@ -1,0 +1,56 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title 流影
+        link(type="text/css",rel="stylesheet",href="/package/bootstrap/dist/css/bootstrap.min.css")
+        link(type="text/css",rel="stylesheet",href="/stylesheets/login.css")
+        link(rel="icon",href="/images/Y.png")
+        script(src="/package/jquery/dist/jquery.js")
+        script(src="/javascripts/login.js")
+    body
+        .container
+            .nonlogin
+                span.glyphicon.glyphicon-log-in
+                a(style="padding: 0 10px 0 2px;font-size: 16px;font-weight: bold",href="#") 登陆
+                span.glyphicon.glyphicon-user
+                a(style="padding: 0 10px 0 2px;font-size: 16px;font-weight: bold",href="#") 注册
+            .login-logo
+            h3(style="text-align:center;color:#0ff") 流逝的时光，我们的记忆
+            .login-register-bac
+                span.login-register
+                    strong#dl.dl-zc(style="color:#000",onclick="login.SwitchStatus();return false;") 登陆
+                    strong |
+                    strong#zc.dl-zc(onclick="login.SwitchStatus();return false;") 注册
+                div#login(style="margin: 30px auto;width:300px;")
+                    div
+                        span.input-left-logo
+                            span.glyphicon.glyphicon-user
+                        input.input-right(type="text",placeholder="用户名/手机号码")
+                    div(style="margin-top:20px")
+                        span.input-left-logo
+                            span.glyphicon.glyphicon-lock
+                        input.input-right(type="password",placeholder="密码")
+                    button.btn.btn-primary.btn-lg(style="width:100%;margin-top:20px;") 登入
+                    div(style="float:left;margin-top:5px;vertical-align:middle;")
+                        input(type="checkbox",style="float:left;width:16px;height:16px;margin-top:2px;")
+                        p(style="float:left;") 记住我
+                    span(style="float:right;margin-top:5px")
+                        a(href="#") 忘记密码
+
+                div#register(style="margin: 30px auto;width:300px;display:none")
+                    div
+                        span.input-left-logo
+                            span.glyphicon.glyphicon-phone
+                        input.input-right(type="text",placeholder="手机号码")
+                    div(style="margin-top:20px")
+                        span.input-left-logo
+                            span.glyphicon.glyphicon-user
+                        input.input-right(type="text",placeholder="用户名")
+                    div(style="margin-top:20px")
+                        span.input-left-logo
+                            span.glyphicon.glyphicon-lock
+                        input.input-right(type="password",placeholder="密码")
+                    button.btn.btn-success.btn-lg(style="width:100%;margin-top:20px;") 登入
+
+

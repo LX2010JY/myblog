@@ -1,0 +1,10 @@
+div.right
+    each item in blogs
+        div.item
+            h2(style="padding:15px;border-left:4px solid #aaa") #{item.title}
+            div.time
+                span.glyphicon.glyphicon-calendar
+                span=item.meta.createAt
+            p.content #{item.content.slice(0,50)+"......"}
+            span(style="float:right;margin-right:20px;").label.label-danger
+                a(href="/artical/#{item._id}",style="color:white") 更多>>

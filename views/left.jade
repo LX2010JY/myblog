@@ -1,0 +1,28 @@
+extends layout
+block link
+    link(type="text/css",rel="stylesheet",href="/stylesheets/left.css")
+    link(type="text/css",rel="stylesheet",href="/stylesheets/right.css")
+block content
+    div.container
+        div.left
+            div.tophalf
+            div.headpic
+                img.img-circle(src="/images/head.jpg")
+            h1(align="center") 影忆
+            p.second 2010 我们的回忆
+            ul
+                li
+                    a(href="/artical") 所有博客
+                li
+                    a(href="/artical") 个人日记
+                li
+                    a(href="/artical") 小说
+            a(href="/artical/write",role="button",style="color:yellow;width:140px;margin-left:80px;").btn.btn-success.btn-lg
+                span.glyphicon.glyphicon-pencil
+                span(style="padding:0 5px;") 提笔就写
+        if right == "artical"
+            include right
+        else if right == "write"
+            include write
+        else if right == "detail"
+            include detail
