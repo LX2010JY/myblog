@@ -1,8 +1,9 @@
 .right{
     position: absolute;
     top:0;
+    left:0;
     width: 950px;
-    right:35px;
+    margin-left: 330px;
 }
 .item{
     height:150px;

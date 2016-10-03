@@ -23,6 +23,21 @@ BlogSchema.pre('save',function (next) {
     }
     next();
 });
+
+/**
+ * this.model('blog') 里面的模型名必须和发布的模型名称一样
+ * @param cb
+ * @returns {Promise}
+ */
+BlogSchema.methods.finduall = function (cb) {
+    console.log("这是实例可以直接执行的方法：");
+    return this.model("blog").find({}).exec(cb);
+};
+
+/**
+ * 静态方法，在model层就可以直接使用
+ * @type {{fetch: mongoose.Schema.statics.fetch, findById: mongoose.Schema.statics.findById}}
+ */
 BlogSchema.statics = {
     fetch:function (cb) {
         return this.find({}).sort({'meta.createAt':'desc'}).exec(cb);

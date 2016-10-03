@@ -10,6 +10,7 @@ html
         script(src="/javascripts/login.js")
     body
         .container
+            div#warning.warning 请先完成表单
             .nonlogin
                 span.glyphicon.glyphicon-log-in
                 a(style="padding: 0 10px 0 2px;font-size: 16px;font-weight: bold",href="#") 登陆
@@ -26,12 +27,12 @@ html
                     div
                         span.input-left-logo
                             span.glyphicon.glyphicon-user
-                        input.input-right(type="text",placeholder="用户名/手机号码")
+                        input.input-right(id="username",name="username",type="text",placeholder="用户名/手机号码")
                     div(style="margin-top:20px")
                         span.input-left-logo
                             span.glyphicon.glyphicon-lock
-                        input.input-right(type="password",placeholder="密码")
-                    button.btn.btn-primary.btn-lg(style="width:100%;margin-top:20px;") 登入
+                        input.input-right(id="passwd",name="passwd",type="password",placeholder="密码")
+                    button.btn.btn-primary.btn-lg(onclick="login.checklogin();",style="width:100%;margin-top:20px;") 登入
                     div(style="float:left;margin-top:5px;vertical-align:middle;")
                         input(type="checkbox",style="float:left;width:16px;height:16px;margin-top:2px;")
                         p(style="float:left;") 记住我
@@ -42,15 +43,15 @@ html
                     div
                         span.input-left-logo
                             span.glyphicon.glyphicon-phone
-                        input.input-right(type="text",placeholder="手机号码")
+                        input.input-right(id="phone",name="phone",type="text",placeholder="手机号码")
                     div(style="margin-top:20px")
                         span.input-left-logo
                             span.glyphicon.glyphicon-user
-                        input.input-right(type="text",placeholder="用户名")
+                        input.input-right(id="name",name="name",type="text",placeholder="用户名")
                     div(style="margin-top:20px")
                         span.input-left-logo
                             span.glyphicon.glyphicon-lock
-                        input.input-right(type="password",placeholder="密码")
-                    button.btn.btn-success.btn-lg(style="width:100%;margin-top:20px;") 登入
+                        input.input-right(id="password",name="password",type="password",placeholder="密码")
+                    button.btn.btn-success.btn-lg(onclick="login.register();",style="width:100%;margin-top:20px;") 注册
 
 

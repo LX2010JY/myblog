@@ -12,6 +12,7 @@ router.get('/', function(req, res) {
         res.render('left', {right: 'artical',blogs:blogs});
     });
 });
+/*博客文章详情页面*/
 router.get('/:id',function (req,res,next) {
     _id = req.params.id;
     blog.findById(_id,function (err,blog) {
@@ -24,18 +25,16 @@ router.get('/:id',function (req,res,next) {
         }
     });
 });
+/*写博客页面*/
 router.get('/write',function (req,res,next) {
 
     res.render('left',{right:'write'});
     next();
 });
-router.post('/add',function (req,res,next) {
+/*添加博文*/
+router.post('/add',function (req,res) {
     var title = req.body.title;
     var content = req.body.content;
-    var id = req.body._id;
-    if(id!=='undefined') {
-
-    }
     _blog = new blog({
         title:title,
         content:content,
@@ -45,11 +44,10 @@ router.post('/add',function (req,res,next) {
         if(err){
             console.log(err);
         }
-        console.log(blog);
         res.redirect('/artical');
     });
-    next();
 });
+/*删除博客*/
 router.get('/del/:id',function (req,res,next) {
     var id=req.params.id;
     blog.remove({_id:id},function (err,blog) {
@@ -61,6 +59,7 @@ router.get('/del/:id',function (req,res,next) {
         }
     });
 });
+/*更新文章*/
 router.get('/upd/:id',function (req,res,next) {
     var _id = req.params.id;
     blog.findById(_id,function (err,blog) {
