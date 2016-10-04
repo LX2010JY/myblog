@@ -5,7 +5,13 @@ var UserSchema = new mongoose.Schema({
     password : String,
     phone : String,
     email : String,
-    age : Number,
+    headimg:String,
+    nname : String,
+    sex:String,
+    graduate_school:String,
+    hobby:String,
+    age : String,
+    desc:String,
     meta : {
         createAt : {
             type:Date,
@@ -34,6 +40,13 @@ UserSchema.pre('save',function (next) {
 UserSchema.statics = {
     fetchName : function (username,password,cb) {
         return this.find({username:username,password:password}).count().exec(cb);
+    },
+    fetchInfoByName : function (username,cb) {
+        return this.findOne({username:username}).exec(cb);
+    },
+    fetchById : function (id,cb) {
+        return this.find({_id:id}).exec(cb);
     }
 };
+
 module.exports = UserSchema;

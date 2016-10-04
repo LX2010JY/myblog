@@ -11,3 +11,32 @@ div.right
                 a(href="/artical/del/#{blog._id}") 删除
         div.blog
             p #{blog.content}
+        div.comment
+            div.minehead
+                img.img-circle(style="width:100%,padding:0!important;",src="/images/head.jpg")
+                div(style="text-align:center;margin-top:8px;letter-spacing:5px")
+                    strong 评论
+            div.minecomment
+                textarea.form-control(id="commcontent",rows=5)
+            button.btn.btn-primary.btn-lg(onclick="blog.addComment('#{blog._id}');return false;",style="margin:10px;margin-left:790px;") 发表
+
+            each item in comments
+                div.othersay
+                    div.mainsay
+                        div.mainhead
+                            img.img-circle(src="/images/head.jpg",style="width:100%")
+                        strong #{item.userinfo.username}
+                        span.label.label-default
+                            span.glyphicon.glyphicon-comment
+                            span(style="line-height:12px;margin-left:5px")=item.mac
+                        p=item.content
+                        p
+                            span.glyphicon.glyphicon-time
+                            span(style="margin-left:5px;color:#aaa")=item.createAt
+
+script(src="/javascripts/blog.js")
+
+
+
+
+

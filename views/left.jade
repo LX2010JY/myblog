@@ -3,7 +3,7 @@ block link
     link(type="text/css",rel="stylesheet",href="/stylesheets/left.css")
     link(type="text/css",rel="stylesheet",href="/stylesheets/right.css")
 block content
-    div.container
+    div.main
         div.left
             div.tophalf
             div.headpic
@@ -12,15 +12,25 @@ block content
             p.second 2010 我们的回忆
             ul
                 li
-                    a(href="/artical") 所有博客
+                    a(href="/artical")
+                        span(style="margin-right:5px").glyphicon.glyphicon-book
+                        span 所有博客
                 li
-                    a(href="/artical") 个人日记
+                    a(href="/artical")
+                        span(style="margin-right:5px").glyphicon.glyphicon-book
+                        span 个人日记
                 li
-                    a(href="/artical") 小说
+                    a(href="/artical")
+                        span(style="margin-right:5px").glyphicon.glyphicon-book
+                        span 我的小说
+                li
+                    a(href="/users/personal")
+                        span(style="margin-right:5px").glyphicon.glyphicon-user
+                        span 个人中心
                 li
                     a(href="/users/login")
                         span(style="margin-right:5px;").glyphicon.glyphicon-log-out
-                        span 注销
+                        span 退出登陆
             a(href="/artical/write",role="button",style="color:yellow;width:140px;margin-left:80px;").btn.btn-success.btn-lg
                 span.glyphicon.glyphicon-pencil
                 span(style="padding:0 5px;") 提笔就写
@@ -30,3 +40,5 @@ block content
             include write
         else if right == "detail"
             include detail
+        else if right == "user/personal"
+            include user/personal

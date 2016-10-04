@@ -1,9 +1,8 @@
 body{
-    background-color: #ccc;
+    background-color: #ddd;
 }
 .main{
-    position: relative;
-    min-width: 1265px;
+    width: 1329px;
     margin: 0 auto;
 }
 .left{

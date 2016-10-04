@@ -4,6 +4,7 @@
     left:0;
     width: 950px;
     margin-left: 330px;
+    overflow: visible;
 }
 .item{
     height:150px;
@@ -29,7 +30,6 @@
     background-color: white;
     margin-top:20px;
     padding: 5px 10px;
-    height: 100%;
 }
 .title{
     margin-left: -10px;
@@ -42,5 +42,81 @@
 }
 .blog{
     margin-top: 50px;
+    padding-bottom: 100px;
+    border-bottom: 2px dotted #ccc;
+}
+.comment{
+    width: 900px;
+    margin:0 auto;
+    margin-top:50px;
+    overflow: visible;
 
+}
+.minehead{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    float: left;
+}
+.minecomment{
+    width: 750px;
+    margin-left:20px;
+    float: left;
+}
+.othersay{
+    cursor: pointer;
+    display: block;
+    clear: both;
+    width: 100%;
+    border: 1px solid #fff;
+    position: relative;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+.mainhead{
+    background-color: #ddd;
+    width: 50px;
+    padding: 2px;
+    z-index: 3;
+    position: absolute;
+    left: -25px;
+    border-radius: 50%;
+    float: left;
+}
+.mainsay{
+    margin: 10px 50px;
+}
+.mainsay strong {
+    display: block;
+    color: #555;
+    margin: 5px 0;
+}
+.mainsay p {
+    color:#999;
+    margin: 5px 0;
+}
+
+.personal{
+    background-color: white;
+    margin-top: 20px;
+    padding: 5px;
+}
+.pinfo{
+    border:2px dotted #ccc;
+    margin: 20px 5px;
+    padding: 20px;
+    position: relative;
+    border-radius: 5px;
+}
+.pinfoimg {
+    position: absolute;
+    top:20px;
+    right:150px;
+    width: 200px;
+    height:200px;
+    background-color: #ccc;
+    text-align: center;
+}
+.pinfoimg strong{
+    letter-spacing: 5px;
 }
