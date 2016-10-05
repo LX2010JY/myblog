@@ -1,86 +1,88 @@
-div.right
-    div.personal
-        h1 个人中心
-        div.pinfo
-            div.pinfoimg
-                if user.headimg!=='undefined'
-                    img(id="imghead",src="#{user.headimg}",style="width:'100%'")
-                else
-                    img(id="imghead",src="/images/head.jpg",style="width:'100%'")
-                strong(style="margin:10px auto;") 头像
-            div.row
-                form#uploadform.form-horizontal(action="/users/personal/uploadimg",method="post",enctype='multipart/form-data',onsubmit="return testone();")
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-bell(style="margin-right:5px")
-                            span 头像：
-                        div.col-md-4
-                            input(id="uploadhead",name="uploadhead",type="file",style="display:none")
-                            button#virtualup.btn.btn-warning 上传头像
-                        script.
-                            function testone() {
-                                $("#uploadform").ajaxSubmit(function (message) {
-                                    if(message.success) {
-                                        $("#imghead").attr('src',message.path);
-                                        $("#headimg").val(message.path)
-                                    } else{
-                                        alert("上传图片失败，网络错误！");
-                                    }
-                                });
-                                return false;
-                            }
-                            $(function () {
-                                $("#virtualup").click(function () {
-                                    $("#uploadhead").click();
-                                });
-                                $("#uploadhead").change(function () {
-                                    $("#uploadform").submit();
-                                });
-                            })
-                form.form-horizontal(method='post',action="/users/personal/upd")
-                    input(type="hidden",id="headimg",name="headimg",value="#{user.headimg}")
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-user(style="margin-right:5px")
-                            span 用户昵称：
-                        div.col-md-4
-                            input(type="text",placeholder="昵称",name="nname",value="#{user.nname}").form-control
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-user(style="margin-right:5px")
-                            span 性别：
-                        div.col-md-2
-                            select(name="sex").form-control
-                                option 男
+extends tab
+block info
+    div.pinfo
+        div.pinfoimg
+            if user.headimg != 'undefined'
+                img(id="imghead",src="#{user.headimg}",style="width:'100%'")
+            else
+                img(id="imghead",src="/images/head.jpg",style="width:'100%'")
+            strong(style="margin:10px auto;") 头像
+        div.row
+            form#uploadform.form-horizontal(action="/personal/uploadimg",method="post",enctype='multipart/form-data',onsubmit="return testone();")
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-bell(style="margin-right:5px")
+                        span 头像：
+                    div.col-md-4
+                        input(id="uploadhead",name="uploadhead",type="file",style="display:none")
+                        button#virtualup.btn.btn-warning 上传头像
+                    script.
+                        function testone() {
+                            $("#uploadform").ajaxSubmit(function (message) {
+                                if(message.success) {
+                                    $("#imghead").attr('src',message.path);
+                                    $("#headimg").val(message.path)
+                                } else{
+                                    alert("上传图片失败，网络错误！");
+                                }
+                            });
+                            return false;
+                        }
+                        $(function () {
+                            $("#virtualup").click(function () {
+                                $("#uploadhead").click();
+                            });
+                            $("#uploadhead").change(function () {
+                                $("#uploadform").submit();
+                            });
+                        })
+            form.form-horizontal(method='post',action="/personal/upd")
+                input(type="hidden",id="headimg",name="headimg",value="#{user.headimg}")
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-user(style="margin-right:5px")
+                        span 用户昵称：
+                    div.col-md-4
+                        input(type="text",placeholder="昵称",name="nname",value="#{user.nname}").form-control
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-user(style="margin-right:5px")
+                        span 性别：
+                    div.col-md-2
+                        select(name="sex").form-control
+                            if user.sex == "男"
+                                option(selected="selected") 男
                                 option 女
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-bell(style="margin-right:5px")
-                            span 年龄：
-                        div.col-md-2
-                            input(name="age",type="text",placeholder="年龄",value="#{user.age}").form-control
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-bell(style="margin-right:5px")
-                            span 毕业学校：
-                        div.col-md-4
-                            input(type="text",name="graduate_school",placeholder="毕业学校",value="#{user.graduate_school}").form-control
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-baby-formula(style="margin-right:5px")
-                            span 爱好：
-                        div.col-md-4
-                            input(type="text",placeholder="爱好",name="hobby",value="#{user.hobby}").form-control
-                    div.form-group
-                        label.col-md-2(style="line-height:34px")
-                            span.glyphicon.glyphicon-leaf(style="margin-right:5px")
-                            span 简介：
-                        div.col-md-10
-                            textarea(rows="5",name="desc").form-control #{user.desc}
-                    button.btn.btn-primary.btn-lg 修改信息
+                            else
+                                option(selected="selected") 女
+                                option 男
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-bell(style="margin-right:5px")
+                        span 年龄：
+                    div.col-md-2
+                        input(name="age",type="text",placeholder="年龄",value="#{user.age}").form-control
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-bell(style="margin-right:5px")
+                        span 毕业学校：
+                    div.col-md-4
+                        input(type="text",name="graduate_school",placeholder="毕业学校",value="#{user.graduate_school}").form-control
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-baby-formula(style="margin-right:5px")
+                        span 爱好：
+                    div.col-md-4
+                        input(type="text",placeholder="爱好",name="hobby",value="#{user.hobby}").form-control
+                div.form-group
+                    label.col-md-2(style="line-height:34px")
+                        span.glyphicon.glyphicon-leaf(style="margin-right:5px")
+                        span 简介：
+                    div.col-md-10
+                        textarea(rows="5",name="desc").form-control #{user.desc}
+                button.btn.btn-primary.btn-lg 修改信息
 
-script(src="/package/ajaxfileupload.js")
-script(src="/package/jquery.form.js")
+    script(src="/package/jquery.form.js")
 
 
 

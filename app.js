@@ -13,6 +13,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var artical = require('./routes/artical');
 var comments = require('./routes/comment');
+var personal = require('./routes/personal');
 
 var app = express();
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '.')));
 
 app.use(multiparty({uploadDir:'./upload/head/'}));
+app.use('/users', users);
 
 //判断是否已经登陆
 app.use(function (req,res,next) {
@@ -44,8 +46,7 @@ app.use(function (req,res,next) {
         next();
     }
 });
-
-app.use('/users', users);
+app.use('/personal',personal);
 app.use('/', routes);
 app.use('/artical',artical);
 

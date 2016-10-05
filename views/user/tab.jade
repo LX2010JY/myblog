@@ -1,0 +1,27 @@
+div.right
+    div.personal
+        img(src="/images/TPOT.png",style="height:100px;width:200px")
+        div(style="border-top:2px groove #ccc;border-bottom:2px groove #ccc")
+            ul(role="tablist").nav.nav-pills.nav-justified
+                if right == 'personal'
+                    li(role="presentation").active
+                        a(href="/personal") 个人信息
+                    li(role="presentation")
+                        a(href="/personal/timeline") 时间轴
+                    li(role="presentation")
+                        a(href="/personal/active") 活动
+                else if right == 'personal/timeline'
+                    li(role="presentation")
+                        a(href="/personal") 个人信息
+                    li(role="presentation").active
+                        a(href="/personal/timeline") 时间轴
+                    li(role="presentation")
+                        a(href="/personal/active") 活动
+                else if right == 'personal/active'
+                    li(role="presentation")
+                        a(href="/personal") 个人信息
+                    li(role="presentation")
+                        a(href="/personal/timeline") 时间轴
+                    li(role="presentation").active
+                        a(href="/personal/active") 活动
+        block info

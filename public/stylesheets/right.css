@@ -120,3 +120,6 @@
 .pinfoimg strong{
     letter-spacing: 5px;
 }
+ul li{
+    border: none;
+}
