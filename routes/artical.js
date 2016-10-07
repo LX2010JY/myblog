@@ -4,6 +4,16 @@ var blog = require('../models/blogs');
 var comment = require('../models/comment');
 var user = require('../models/user');
 var _= require('underscore');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
+
+
+router.post('/upload',multipartMiddleware,function (req,res) {
+    res.json({'success':1,'message':'上传成功','url':req.files['editormd-image-file']['path']});
+});
+
+
+
 
 /* GET artical listing. */
 router.get('/', function(req, res) {

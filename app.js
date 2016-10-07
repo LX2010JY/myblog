@@ -40,6 +40,7 @@ app.use('/users', users);
 
 //判断是否已经登陆
 app.use(function (req,res,next) {
+    req.session.username="冯佳雨";
     if(!req.session.username) {
         res.redirect('/users/login');
     } else {

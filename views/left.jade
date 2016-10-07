@@ -2,8 +2,11 @@ extends layout
 block link
     link(type="text/css",rel="stylesheet",href="/stylesheets/left.css")
     link(type="text/css",rel="stylesheet",href="/stylesheets/right.css")
+    link(type="text/css",rel="stylesheet",href="/package/editor.md/css/editormd.css")
+    script(src="/package/editor.md/src/editormd.js",type="text/javascript")
 block content
     div.main
+
         div.left
             div.tophalf
             div.headpic
@@ -46,3 +49,5 @@ block content
             include user/timeline
         else if right == 'personal/active'
             include user/active
+        else if right == 'editor'
+            include editor

@@ -11,6 +11,10 @@ div.right
                 a(href="/artical/del/#{blog._id}") 删除
         div.blog
             p #{blog.content}
+        //script.
+            $(function () {
+                $(".blog").append(#{blog.content});
+            })
         div.comment
             div.minehead
                 img.img-circle(style="width:100%,padding:0!important;",src="/images/head.jpg")
