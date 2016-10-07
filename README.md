@@ -10,3 +10,10 @@ node+express 这次一定要上线成为我的个人博客
 <li>3.Entity save (包含 insert 和 update)
 </ul>
 使用介绍：http://cnodejs.org/topic/504b4924e2b84515770103dd
+
+#node-canvas安装
+使用验证码，使用canvas ，在ubuntu环境下
+<ul>
+<li>sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++</li>
+<li>npm install canvas -g</li>
+</ul>

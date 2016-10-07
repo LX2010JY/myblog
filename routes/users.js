@@ -14,9 +14,30 @@ router.get('/logout',function (req,res) {
     req.session.destroy();
     res.redirect('/users/login');
 });
+
+var createcanvas = function(){
+  var Canvas = require('canvas');
+  var canvas = new Canvas(200,200);
+  var ctx = canvas.getContext('2d');
+
+  ctx.font = '30px Imact';
+  ctx.rotate(.1);
+  var num  = parseInt(Math.random()*8999+1000,10);
+
+  ctx.fillText(num,50,100);
+
+  var te = ctx.measureText('youudehexie!');
+  ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+  ctx.beginPath();
+  ctx.lineTo(50+te.width,102);
+  ctx.stroke();
+  return canvas.toDataURL();
+}
 /*登陆页面*/
 router.get('/login',function (req,res) {
-    res.render('logres',{status:'login'});
+
+
+    res.render('logres',{status:'login',yzm:createcanvas()});
 });
 /*注册页面*/
 router.get('/register',function (req,res) {

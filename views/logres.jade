@@ -10,6 +10,7 @@ html
         script(src="/javascripts/login.js")
     body
         .container
+            img(src="#{yzm}",style="width:100px;height:50px;display:none",alt="无")
             div#warning.warning 请先完成表单
             .nonlogin
                 span.glyphicon.glyphicon-log-in
@@ -53,5 +54,3 @@ html
                             span.glyphicon.glyphicon-lock
                         input.input-right(id="password",name="password",type="password",placeholder="密码")
                     button.btn.btn-success.btn-lg(onclick="login.register();",style="width:100%;margin-top:20px;") 注册
-
-
