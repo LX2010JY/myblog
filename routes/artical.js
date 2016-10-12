@@ -9,7 +9,8 @@ var multipartMiddleware = multipart();
 
 
 router.post('/upload',multipartMiddleware,function (req,res) {
-    res.json({'success':1,'message':'上传成功','url':req.files['editormd-image-file']['path']});
+    console.log(req.files.upload_file.path);
+    res.json({'success':true,'msg':'上传成功(message)','file_path':'/'+req.files['upload_file']['path']});
 });
 
 
@@ -59,9 +60,7 @@ router.get('/:id',function (req,res,next) {
 });
 /*写博客页面*/
 router.get('/write',function (req,res,next) {
-
     res.render('left',{right:'write'});
-    next();
 });
 /*添加博文*/
 router.post('/add',function (req,res) {
@@ -81,9 +80,10 @@ router.post('/add',function (req,res) {
             _blog = _.extend(blog,blogObj);
             _blog.save(function (err,blog) {
                 if(err) {
-                    console.log(err);
+                    res.json({'success':0});
                 } else {
-                    res.redirect('/artical/'+id);
+                    res.json({'success':1,'url':'/artical/'+id});
+                    // res.redirect('/artical/'+id);
                     return;
                 }
             })
@@ -98,9 +98,10 @@ router.post('/add',function (req,res) {
 
         _blog.save(function (err, blog) {
             if (err) {
-                console.log(err);
+                res.json({'success':0});
+                // console.log(err);
             }
-            res.redirect('/artical');
+            res.json({'success':1,'url':'/artical'});
         });
     }
 });

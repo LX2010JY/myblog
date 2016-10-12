@@ -2,9 +2,9 @@
     position: absolute;
     top:0;
     left:0;
-    width: 950px;
     margin-left: 330px;
     overflow: visible;
+
 }
 .item{
     height:150px;

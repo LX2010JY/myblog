@@ -17,6 +17,20 @@ var blog = {
                 alert('添加失败');
             }
         });
+    },
+    sendblog : function (_id,title,content) {
+        var data = {
+            '_id' : _id,
+            'title' :title,
+            'content':content
+        };
+        $.post('/artical/add',data,function (dat) {
+            if(dat.success==1){
+                window.location.href = dat.url;
+            } else {
+                alert('错误，再试试吧');
+            }
+        });
     }
 
 }

@@ -10,22 +10,100 @@ script.
        });
     });
 div.right
-
+    link(rel="stylesheet",type="text/css",href="/package/simditor/styles/simditor.css")
+    script(type="text/javascript" src="/package/simple-module/lib/module.js")
+    script(type="text/javascript" src="/package/simple-hotkeys/lib/hotkeys.js")
+    script(type="text/javascript" src="/package/simple-uploader/lib/uploader.js")
+    script(type="text/javascript",src="/package/simditor/lib/simditor.js")
+    
+    
     h1(style="text-align:left;margin:30px 0 -20px 0;color:#fff") 时光在流逝，让我们记下时间的流影
-    div(style="margin:60px 0 0 -70px;")
-        form.form-horizontal(method="post",action="/artical/add")
+    div(style="margin:60px 0 0 0;overflow:hidden")
             input(id="_id",name="_id",type="hidden",value="#{blog._id}")
-            div.form-group
-                label.col-sm-2.control-label(for="title") 文章题目：
-                div.col-sm-10
-                    input(id="title",name="title",type="text",placeholder="文章题目",value=blog.title).form-control
+            input(id="title",name="title",style="margin:20px 0;font-size:20px;padding:20px;color:orange;text-align:center",type="text",placeholder="文章题目",value=blog.title).form-control
+            textarea#content(placeholder="写你所想...",autofocus,style="margin:20px") !{blog.content}
+            script.
+                var editor = new Simditor({
+                    textarea:$("#content"),
+                    defaultImage : '/images/Y.png',
+                    upload: {
+                        url:'/artical/upload',
+                        params: null,
+                        connectionCount:3,
+                        leaveConfirm:'正在上传，你确定要离开吗？'
+                    },
+                    toolbar : [
+                            'title',
+                            'bold',
+                            'italic',
+                            'underline',
+                            'strikethrough',
+                            'fontScale',
+                            'color',
+                            'ol',
+                            'ul',
+                            'blockquote',
+                            'code',
+                            'table',
+                            'link',
+                            'image',
+                            'hr',
+                            'indent',
+                            'outdent',
+                            'alignment'
+                    ],
+                    toolbarFloatOffset : 5,
+                    pasteImage:true,
+                    codeLanguages: [
+                        {name: 'Bash', value: 'bash'},
+                        {name: 'C++', value: 'c++'},
+                        {name: 'C#', value: 'cs'},
+                        {name: 'CSS', value: 'css'},
+                        {name: 'Erlang', value: 'erlang'},
+                        {name: 'Less', value: 'less'},
+                        {name: 'Sass', value: 'sass'},
+                        {name: 'Diff', value: 'diff'},
+                        {name: 'CoffeeScript', value: 'coffeescript'},
+                        {name: 'HTML,XML', value: 'html'},
+                        {name: 'JSON', value: 'json'},
+                        {name: 'Java', value: 'java'},
+                        {name: 'JavaScript', value: 'js'},
+                        {name: 'Markdown', value: 'markdown'},
+                        {name: 'Objective C', value: 'oc'},
+                        {name: 'PHP', value: 'php'},
+                        {name: 'Perl', value: 'parl'},
+                        {name: 'Python', value: 'python'},
+                        {name: 'Ruby', value: 'ruby'},
+                        {name: 'SQL', value: 'sql'}
+                    ]
 
-            //div.form-group
-                label.col-sm-2.control-label(for="content") 内容详情：
-                div.col-sm-10
-                    textarea(id="content",name="content",rows="20").form-control #{blog.content}
+
+                });
+                $("#editor").val(editor.sync());
+                function sendblog() {
+                    var _id = $("#_id").val();
+                    var title = $("#title").val();
+                    var content = editor.getValue();
+                    if(!title||!content) {
+                        alert("请完善信息先～～～");
+                        return;
+                    }
+                    var data = {
+                        '_id': _id,
+                        'title': title,
+                        'content': content
+                    };
+                    $.post('/artical/add', data, function (dat) {
+                        if (dat.success == 1) {
+                            window.location.href = dat.url;
+                        } else {
+                            alert('错误，再试试吧');
+                        }
+                    });
+
+                }
             //这是新加的markdown编辑器 [editor.md]
-            div.form-group
+            //div.form-group
                 label.col-sm-2.control-label 详情：
                 div.col-sm-10
                     div#test-editormd.editormd
@@ -46,7 +124,4 @@ div.right
                             });
                         });
             //editor.md 结束
-            div.form-group
-                div.col-sm-10.col-sm-offset-2
-                    button.btn.btn-primary.btn-lg 发送
-
+            button.btn.btn-danger.btn-sm(style="padding:5px 30px;float:right;margin-top:20px;margin-bottom:100px;",onclick='sendblog();return false;') 发送

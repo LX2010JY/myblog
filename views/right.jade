@@ -6,5 +6,6 @@ div.right
                 span.glyphicon.glyphicon-calendar
                 span=item.meta.createAt
             p.content #{item.content.slice(0,50)+"......"}
+            //p.content 文章片段
             span(style="float:right;margin-right:20px;").label.label-danger
                 a(href="/artical/#{item._id}",style="color:white") 更多>>

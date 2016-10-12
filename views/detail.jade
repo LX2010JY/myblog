@@ -9,8 +9,7 @@ div.right
                 a(href="/artical/upd/#{blog._id}") 编辑
                 strong(style="padding:0 5px;") |
                 a(href="/artical/del/#{blog._id}") 删除
-        div.blog(style="padding:5px 20px;")
-            !{blog.content}
+        div.blog(style="padding:5px 20px;") !{blog.content}
         //script.
             $(function () {
                 $(".blog").append(#{blog.content});

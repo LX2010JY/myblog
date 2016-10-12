@@ -3,9 +3,9 @@ block info
     div.pinfo
         div.pinfoimg
             if user.headimg != 'undefined'
-                img(id="imghead",src="#{user.headimg}",style="width:'100%'")
+                img(id="imghead",src="#{user.headimg}",style="max-width:100%;height:100%")
             else
-                img(id="imghead",src="/images/head.jpg",style="width:'100%'")
+                img(id="imghead",src="/images/head.jpg",style="max-width:100%;height:100%")
             strong(style="margin:10px auto;") 头像
         div.row
             form#uploadform.form-horizontal(action="/personal/uploadimg",method="post",enctype='multipart/form-data',onsubmit="return testone();")
