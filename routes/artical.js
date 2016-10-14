@@ -25,11 +25,18 @@ router.get('/', function(req, res) {
         res.render('left', {right: 'artical',blogs:blogs});
     });
 });
+/*写博客页面*/
+router.get('/write',function (req,res,next) {
+    res.render('left',{right:'write'});
+});
+
+
 /*博客文章详情页面*/
 router.get('/:id',function (req,res,next) {
     _id = req.params.id;
     blog.findById(_id,function (err,blog) {
         if(err) {
+            console.log('就是我错了');
             console.log(err);
             next();
         } else {
@@ -41,7 +48,7 @@ router.get('/:id',function (req,res,next) {
                     //     /////////////////////////////////////
                     //     user.fetchById(comments[key].my_id,function (err,user) {
                     //         if(err){
-                    //             console.log("失败");
+                    //             console.logs("失败");
                     //         } else {
                     //             comments[key].userinfo.username = user[0].username;
                     //             comments[key].userinfo._id = user[0]._id;
@@ -54,10 +61,6 @@ router.get('/:id',function (req,res,next) {
 //            next();
         }
     });
-});
-/*写博客页面*/
-router.get('/write',function (req,res,next) {
-    res.render('left',{right:'write'});
 });
 /*添加博文*/
 router.post('/add',function (req,res) {
@@ -96,7 +99,7 @@ router.post('/add',function (req,res) {
         _blog.save(function (err, blog) {
             if (err) {
                 res.json({'success':0});
-                // console.log(err);
+                // console.logs(err);
             }
             res.json({'success':1,'url':'/artical'});
         });
@@ -124,7 +127,6 @@ router.get('/upd/:id',function (req,res,next) {
             next();
         } else {
             res.render('left', {right: 'write', blog: blog});
-            next();
         }
     });
 });

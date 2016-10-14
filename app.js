@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var log4js = require('log4js');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var session = require('express-session');
@@ -17,6 +18,22 @@ var personal = require('./routes/personal');
 
 var app = express();
 
+
+log4js.configure({
+    appenders:[
+        {
+            type:'file',
+            filename:'logs/access.log',
+            maxLogSize: 1024000,
+            backups:3,
+            category:'normal'
+        }
+    ],
+    replaceControl:true
+});
+var loger = log4js.getLogger('normal');
+loger.setLevel('TRACE');
+app.use(log4js.connectLogger(loger,{level:log4js.levels.TRACE}));
 
 mongoose.connect('mongodb://127.0.0.1:27017/blog');
 blog = require('./models/blogs');
