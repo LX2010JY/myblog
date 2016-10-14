@@ -1,22 +1,18 @@
-script.
-    $(function () {
-       $("button").click(function () {
-           if($("#title").val()==''||$("#content").val()=='') {
-               alert("请填写内容之后再提交！");
-               return;
-           } else {
-               $(this).submit();
-           }
-       });
-    });
-div.right
+div.right(style='z-index:10000')
     link(rel="stylesheet",type="text/css",href="/package/simditor/styles/simditor.css")
     script(type="text/javascript" src="/package/simple-module/lib/module.js")
     script(type="text/javascript" src="/package/simple-hotkeys/lib/hotkeys.js")
     script(type="text/javascript" src="/package/simple-uploader/lib/uploader.js")
     script(type="text/javascript",src="/package/simditor/lib/simditor.js")
-    
-    
+    link(type='text/css',rel='stylesheet',href="/package/simditor-emoji/styles/simditor-emoji.css")
+    script(type='text/javascript',src='/package/simditor-emoji/lib/simditor-emoji.js')
+    script(type='text/javascript',src='/package/marked/lib/marked.js')
+    script(type='text/javascript',src='/package/to-markdown/dist/to-markdown.js')
+    script(type='text/javascript',src='/package/simditor-markdown/lib/simditor-markdown.js')
+    script(type='text/javascript',src='/package/simditor-fullscreen/lib/simditor-fullscreen.js')
+    link(type='text/css',rel='stylesheet',href="/package/simditor-markdown/styles/simditor-markdown.css",media="screen",charset="utf-8")
+
+
     h1(style="text-align:left;margin:30px 0 -20px 0;color:#fff") 时光在流逝，让我们记下时间的流影
     div(style="margin:60px 0 0 0;overflow:hidden")
             input(id="_id",name="_id",type="hidden",value="#{blog._id}")
@@ -25,6 +21,11 @@ div.right
             script.
                 var editor = new Simditor({
                     textarea:$("#content"),
+                    emoji:{
+                        imagePath:'/package/simditor-emoji/images/emoji/'
+                    },
+                    markdown:false,
+
                     defaultImage : '/images/Y.png',
                     upload: {
                         url:'/artical/upload',
@@ -32,13 +33,16 @@ div.right
                         connectionCount:3,
                         leaveConfirm:'正在上传，你确定要离开吗？'
                     },
+                    tabIndent: true,
                     toolbar : [
+                            'emoji',
+                            'markdown',
                             'title',
+                            'fullscreen',
                             'bold',
                             'italic',
                             'underline',
                             'strikethrough',
-                            'fontScale',
                             'color',
                             'ol',
                             'ul',

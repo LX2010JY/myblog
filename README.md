@@ -5,7 +5,7 @@ node+express 这次一定要上线成为我的个人博客
 <ol>
 <li>git clone 代码到本地
 <li>进入文件夹下面，使用 npm install 命令安装所需的插件
-<li>bower install bootstrap,simditor
+<li>bower install bootstrap,simditor,simditor-emoji,simditor-markdown,simditor-fullscreen
 <li>安装mongodb，默认配置就好
 <li>node ./bin/www 开启服务
 </ol>

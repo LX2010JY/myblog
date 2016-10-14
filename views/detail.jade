@@ -1,4 +1,14 @@
 div.right
+    link(rel="stylesheet",href="/package/highlight.js/styles/monokai.css")
+    script(src="/package/highlight.js/lib/languages/javascript.js")
+    script(src="/package/highlight.js/lib/highlight.js")
+    script(src="/package/highlight.js/lib/languages/python.js")
+    script.
+        $(function () {
+            $("code").removeClass();
+        });
+        hljs.initHighlightingOnLoad();
+
     div.detail
         div.title
             h1 #{blog.title}

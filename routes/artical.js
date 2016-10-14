@@ -35,10 +35,8 @@ router.get('/:id',function (req,res,next) {
         } else {
             comment.fetchBlogById(_id,function (err,comments) {
                 if(err){
-                    console.log('失败');
                     console.log(err);
                 } else {
-                    console.log('成功');
                     // for(var key in comments) {
                     //     /////////////////////////////////////
                     //     user.fetchById(comments[key].my_id,function (err,user) {
@@ -51,7 +49,6 @@ router.get('/:id',function (req,res,next) {
                     //     });
                     // }
                     res.render('left',{right:'detail',blog:blog,'comments':comments});
-                    next();
                 }
             });
 //            next();
